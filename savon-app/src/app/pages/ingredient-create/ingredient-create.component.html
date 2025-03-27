@@ -1,0 +1,68 @@
+<main>
+    <h2>Ajouter un nouvel ingrédient</h2>
+    
+    
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="nom">Nom:</label>
+        <input id="nom" name="nom" [(ngModel)]="ingredient.nom" required>
+      </div>
+    
+      <div>
+        <label for="iode">Iode:</label>
+        <input id="iode" name="iode" type="number" [(ngModel)]="ingredient.iode" required>
+      </div>
+    
+      <div>
+        <label for="ins">INS:</label>
+        <input id="ins" name="ins" type="number" [(ngModel)]="ingredient.ins" required>
+      </div>
+    
+      <div>
+        <label for="sapo">SAPO:</label>
+        <input id="sapo" name="sapo" type="number" [(ngModel)]="ingredient.sapo" required>
+      </div>
+    
+      <div>
+        <label for="volMousse">Volume Mousse:</label>
+        <input id="volMousse" name="volMousse" type="number" [(ngModel)]="ingredient.volMousse" required>
+      </div>
+    
+      <div>
+        <label for="tenueMousse">Tenue Mousse:</label>
+        <input id="tenueMousse" name="tenueMousse" type="number" [(ngModel)]="ingredient.tenueMousse" required>
+      </div>
+    
+      <div>
+        <label for="douceur">Douceur:</label>
+        <input id="douceur" name="douceur" type="number" [(ngModel)]="ingredient.douceur" required>
+      </div>
+    
+      <div>
+        <label for="lavant">Pouvoir Lavant:</label>
+        <input id="lavant" name="lavant" type="number" [(ngModel)]="ingredient.lavant" required>
+      </div>
+    
+      <div>
+        <label for="durete">Dureté:</label>
+        <input id="durete" name="durete" type="number" [(ngModel)]="ingredient.durete" required>
+      </div>
+    
+      <div>
+        <label for="solubilite">Solubilité:</label>
+        <input id="solubilite" name="solubilite" type="number" [(ngModel)]="ingredient.solubilite" required>
+      </div>
+    
+      <div>
+        <label for="sechage">Séchage:</label>
+        <input id="sechage" name="sechage" type="number" [(ngModel)]="ingredient.sechage" required>
+      </div>
+    
+      <div>
+        <label for="estCorpsGras">Corps Gras:</label>
+        <input id="estCorpsGras" name="estCorpsGras" type="checkbox" [(ngModel)]="ingredient.estCorpsGras">
+      </div>
+    
+      <button type="submit">Enregistrer</button>
+    </form>
+    </main>
