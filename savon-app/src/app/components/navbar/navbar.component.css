@@ -1,49 +1,97 @@
-/* Assurez-vous que le navbar est bien centré et équilibré */
-.navbar-container {
+/* navbar.component.css */
+.adepro-navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
-    background-color: white; /* Fond blanc */
-    border-bottom: 1px solid #ddd; /* Légère bordure en bas */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Ajustement du logo */
-.navbar-logo img {
-    height: 150px; /* Ajuster la taille du logo */
-}
-
-/* Alignement des liens de navigation */
-.navbar-nav {
+    padding: 10px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navbar-left .logo-img {
+    height: 80px; /* Logo agrandi */
+    transition: transform 0.2s ease;
+    display: block;
+  }
+  
+  .navbar-left .logo-img:hover {
+    transform: scale(1.05);
+  }
+  
+  .navbar-center {
     display: flex;
-    gap: 20px; /* Espacement entre les liens */
-}
-
-/* Style des liens */
-.navbar-nav a {
+    gap: 24px;
+  }
+  
+  .nav-link {
     text-decoration: none;
-    color: #333;
-    font-size: 16px;
+    color: #3a3a3a;
+    font-size: 15px;
     font-weight: 500;
-    transition: color 0.3s ease-in-out;
-}
-
-.navbar-nav a:hover {
-    color: #28a745; /* Couleur verte au survol */
-}
-
-/* Bouton de connexion */
-.navbar-btn {
-    padding: 5px 15px;
-    border: 1px solid #007bff;
-    color: #007bff;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-}
-
-.navbar-btn:hover {
-    background-color: #007bff;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #a0d800; /* Vert ADEPRO */
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #a0d800;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .navbar-right .connexion-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #9c28b1; /* Couleur violette dans le style ADEPRO */
     color: white;
-}
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-right .connexion-btn:hover {
+    background-color: #8a00a3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(156, 40, 177, 0.3);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 992px) {
+    .navbar-center {
+      gap: 15px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .adepro-navbar {
+      flex-direction: column;
+      padding: 10px;
+    }
+    
+    .navbar-center {
+      margin: 15px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .navbar-right {
+      margin-top: 10px;
+    }
+  }

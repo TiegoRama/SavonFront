@@ -1,16 +1,21 @@
-<div class="navbar-container">
-  <div class="navbar-logo">
-      <h5><img src="assets/adeprologo.jpeg" alt="Logo ADEPRO"></h5>
+<!-- navbar.component.html -->
+<div class="adepro-navbar">
+  <div class="navbar-left">
+    <a routerLink="/" class="logo-link">
+      <img src="assets/adeprologo.jpeg" alt="Logo ADEPRO" class="logo-img">
+    </a>
   </div>
-  <nav class="navbar-nav">
-    
-    <a routerLink="/">Accueille</a>
-    <a routerLink="/ingredients">Ingrédients</a>
-    <a routerLink="/recettes">Recettes</a>
-    <a routerLink="/createingredient">Création d'ingredient</a>
-    <a routerLink="/managementingredient">Gestion</a>
-    <a routerLink="/createrecette">Création de recette</a>
-</nav>
-  <a class="navbar-btn" href="#">Connection</a>
+  
+  <nav class="navbar-center">
+    <a routerLink="/" class="nav-link">Accueil</a>
+    <a routerLink="/ingredients" class="nav-link">Ingrédients</a>
+    <a routerLink="/recettes" class="nav-link">Recettes</a>
+    <a routerLink="/createingredient" class="nav-link">Création d'ingrédient</a>
+    <a routerLink="/managementingredient" class="nav-link">Gestion</a>
+    <a routerLink="/createrecette" class="nav-link">Création de recette</a>
+  </nav>
+  
+  <div class="navbar-right">
+    <a class="connexion-btn" href="#">CONNEXION</a>
+  </div>
 </div>
-
