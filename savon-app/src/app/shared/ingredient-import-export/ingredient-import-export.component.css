@@ -1,0 +1,111 @@
+/* Styles pour le composant d'import/export */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* Boutons d'import/export */
+  .btn {
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-primary {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #1976d2;
+  }
+  
+  .btn-success {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .btn-success:hover {
+    background-color: #388e3c;
+  }
+  
+  /* Icônes pour les boutons (optionnel) */
+  .btn::before {
+    margin-right: 8px;
+    font-size: 16px;
+  }
+  
+  .btn-primary::before {
+    content: "↑";
+  }
+  
+  .btn-success::before {
+    content: "↓";
+  }
+  
+  /* Messages de confirmation */
+  .alert {
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    animation: fadeIn 0.3s ease-in-out;
+    font-weight: 500;
+  }
+  
+  .alert-danger {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left: 4px solid #c62828;
+  }
+  
+  .alert-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 4px solid #2e7d32;
+  }
+  
+  /* Animation pour les alertes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+    
+    .btn {
+      width: 100%;
+      margin: 5px 0;
+    }
+    
+    .col-md-4 {
+      width: 100%;
+      margin: 0;
+    }
+  }

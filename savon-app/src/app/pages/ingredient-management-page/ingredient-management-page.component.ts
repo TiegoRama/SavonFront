@@ -91,11 +91,26 @@ export class IngredientManagerPageComponent implements OnInit {
 ses données.
  * @param ingredient L'ingrédient à modifier.
  */
- editIngredient(ingredient: Ingredient): void {
- this.selectedIngredient = { ...ingredient }; // Clone l'objet pour éviter les modifications directes
- //this.ingredientToEditId = ingredient.id;
- this.isEditing = true;
- }
+/**
+ * Prépare la modification d'un ingrédient en remplissant le formulaire avec ses données.
+ * @param ingredient L'ingrédient à modifier.
+ */
+editIngredient(ingredient: Ingredient): void {
+  // Cloner l'objet pour éviter les modifications directes
+  this.selectedIngredient = { ...ingredient }; 
+  this.isEditing = true;
+  
+  // Faire défiler jusqu'au formulaire
+  setTimeout(() => {
+    const formElement = document.querySelector('app-ingredient-form');
+    if (formElement) {
+      formElement.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start'
+      });
+    }
+  }, 100);
+}
  /**
  * Supprime un ingrédient via l'API.
  * @param id - Identifiant de l'ingrédient à supprimer.
@@ -149,4 +164,7 @@ importFromCSV(event: any): void {
 exportToCSV(): void {
 // Logique d'exportation depuis le sous-composant
 }
+// Messages de notification
+message: string = '';
+errorOccurred: boolean = false;
 }

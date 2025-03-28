@@ -1,32 +1,45 @@
-<!-- --------------------------------------------- -->
-<!-- Formulaire de saisie d'un nouvel ingrédient : -->
-<!-- --------------------------------------------- -->
-<form (ngSubmit)="saveIngredient()" #ingredientForm="ngForm" class="mt-3">
-    <div class="row">
-    <div class="col-6 mb-3">
-    <label for="nom" class="form-label">Nom de l'ingrédient</label>
-    <input type="text" id="nom" [(ngModel)]="ingredient.nom" name="nom"
-   class="form-control" required>
+<div class="container">
+    <div class="header">
+      <h2>{{ isEditing ? 'Modifier un ingrédient' : 'Ajouter un nouvel ingrédient' }}</h2>
+      <p class="subtitle">Complétez le formulaire pour {{ isEditing ? 'modifier l\'ingrédient' : 'ajouter un ingrédient à la base de données' }}</p>
     </div>
-    </div>
-    <!-- Champs de saisie des caractéristiques : sapo; ins; iode; lavant; douceur;
-   dureté; solubilité; séchage; vol. mousse et tenue mousse -->
-    <div class="col-lg-2 mb-3" *ngFor="let field of ingredientFields">
-    <label [for]="field" class="form-label">{{ field | titlecase }}</label>
-    <input type="number" [id]="field" [(ngModel)]="ingredient[field]"
-   [name]="field" class="form-control" required>
-    </div>
-   
-    <!-- Checkbox pour indiquer si c'est un corps gras -->
-    <div class="form-check mb-3">
-    <input type="checkbox" id="estCorpsGras"
-   [(ngModel)]="ingredient.estCorpsGras" name="estCorpsGras" class="form-checkinput">
-    <label for="estCorpsGras" class="form-check-label">Cet ingrédient est un
-   corps gras</label>
-    </div>
-    <!-- Boutons -->
-    <button  type="submit" class="btn btn-primary">
-    {{ isEditing ? 'Mettre à jour' : 'Ajouter' }} l'ingrédient
-    </button>
-    <button type="button" class="btn btn-secondary ms-2" (click)="cancel()"*ngIf="isEditing">Annuler </button>
-</form>
+    
+    <form (ngSubmit)="saveIngredient()" #ingredientForm="ngForm" class="ingredient-form">
+      <!-- Section principale -->
+      <div class="form-section">
+        <div class="form-group">
+          <label for="nom">Nom de l'ingrédient:</label>
+          <input id="nom" name="nom" [(ngModel)]="ingredient.nom" required 
+                 placeholder="Ex: Huile d'olive" class="form-control">
+        </div>
+      
+        <div class="form-check">
+          <input id="estCorpsGras" name="estCorpsGras" type="checkbox" 
+                 [(ngModel)]="ingredient.estCorpsGras" class="form-check-input">
+          <label for="estCorpsGras" class="form-check-label">Cet ingrédient est un corps gras</label>
+          <span class="help-text">Cochez si cet ingrédient est un corps gras</span>
+        </div>
+      </div>
+  
+      <!-- Section des caractéristiques -->
+      <div class="characteristics-section">
+        <h3>Caractéristiques</h3>
+        <div class="form-row">
+          <!-- Génération dynamique des champs basée sur ingredientFields -->
+          <div class="form-group" *ngFor="let field of ingredientFields">
+            <label [for]="field">{{ field | titlecase }}:</label>
+            <input [id]="field" [name]="field" type="number" [(ngModel)]="ingredient[field]" 
+                   required class="form-control" placeholder="0">
+            <span class="help-text">Valeur pour {{ field }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+          {{ isEditing ? 'Mettre à jour' : 'Ajouter' }} l'ingrédient
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="cancel()" *ngIf="isEditing">Annuler</button>
+      </div>
+    </form>
+  </div>

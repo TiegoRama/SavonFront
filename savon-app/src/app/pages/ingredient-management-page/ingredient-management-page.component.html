@@ -1,26 +1,44 @@
 <div class="container">
-    <h1>Gestion des Ingrédients</h1>
-   
+    <div class="header">
+      <h1>Gestion des Ingrédients</h1>
+      <p class="subtitle">Gérez vos ingrédients pour créer des recettes personnalisées</p>
+    </div>
+    
+    <!-- Messages de notification -->
+    <div *ngIf="message" class="alert" [ngClass]="errorOccurred ? 'alert-danger' : 'alert-success'">
+      {{ message }}
+    </div>
+    
     <!-- Formulaire d'ajout/modification -->
-    <app-ingredient-form
-    [ingredient]="selectedIngredient"
-    [isEditing]="isEditing"
-    (save)="saveIngredient($event)"
-    (cancelEdit)="resetForm()">
-    </app-ingredient-form>
-   
+    <div class="management-section form-section">
+      <h2>{{ isEditing ? 'Modifier' : 'Ajouter' }} un ingrédient</h2>
+      <app-ingredient-form
+        [ingredient]="selectedIngredient"
+        [isEditing]="isEditing"
+        (save)="saveIngredient($event)"
+        (cancelEdit)="resetForm()">
+      </app-ingredient-form>
+    </div>
+    
     <!-- Liste des ingrédients -->
-    <app-ingredient-list  [ingredients]="ingredients"
-    (edit)="editIngredient($event)"
-    (delete)="deleteIngredient($event)"
-    (deleteAll)="deleteAllIngredients()">
-    </app-ingredient-list>
-   
+    <div class="management-section list-section">
+      <h2>Liste des ingrédients</h2>
+      <app-ingredient-list
+        [ingredients]="ingredients"
+        (edit)="editIngredient($event)"
+        (delete)="deleteIngredient($event)"
+        (deleteAll)="deleteAllIngredients()">
+      </app-ingredient-list>
+    </div>
+    
     <!-- Import / Export CSV -->
-    <app-ingredient-import-export
-    [ingredients]="ingredients"
-    (import)="importFromCSV($event)"
-    (export)="exportToCSV()"
-    (importComplete)="fetchIngredients()">
-    </app-ingredient-import-export>
-   </div>
+    <div class="management-section import-export-section">
+      <h2>Importer / Exporter</h2>
+      <app-ingredient-import-export
+        [ingredients]="ingredients"
+        (import)="importFromCSV($event)"
+        (export)="exportToCSV()"
+        (importComplete)="fetchIngredients()">
+      </app-ingredient-import-export>
+    </div>
+  </div>

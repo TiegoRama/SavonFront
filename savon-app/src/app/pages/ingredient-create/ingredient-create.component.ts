@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Ingredient } from '../../models/Ingredient';
 import { IngredientService } from '../../services/ingredients.service';
 
@@ -9,22 +10,41 @@ import { IngredientService } from '../../services/ingredients.service';
   styleUrls: ['./ingredient-create.component.css']
 })
 export class AjouterIngredientComponent implements OnInit {
-  ingredient: Ingredient = new Ingredient()
+  ingredient: Ingredient = new Ingredient();
+  successMessage: string = '';
+  errorMessage: string = '';
 
-  constructor(private ingredientService: IngredientService) {}
+  constructor(
+    private ingredientService: IngredientService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Initialisation si nécessaire
+  }
 
-  onSubmit(): void {
-    this.ingredientService.addIngredient(this.ingredient).subscribe({
+  onIngredientSave(ingredient: Ingredient): void {
+    this.ingredientService.addIngredient(ingredient).subscribe({
       next: (response) => {
         console.log('Ingrédient enregistré avec succès:', response);
-        alert('Ingrédient enregistré avec succès !');
+        this.successMessage = 'Ingrédient enregistré avec succès !';
+        setTimeout(() => {
+          this.router.navigate(['/ingredients']);
+        }, 2000);
       },
       error: (error) => {
         console.error('Erreur lors de l\'enregistrement de l\'ingrédient:', error);
-        alert('Erreur lors de l\'enregistrement de l\'ingrédient.');
+        this.errorMessage = 'Erreur lors de l\'enregistrement de l\'ingrédient.';
       }
     });
+  }
+
+  onCancel(): void {
+    this.router.navigate(['/ingredients']);
+  }
+
+  // Cette méthode est préservée pour la compatibilité
+  onSubmit(): void {
+    this.onIngredientSave(this.ingredient);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Ingredient } from '../../models/Ingredient';
-//import { Modal } from 'bootstrap';
+declare var bootstrap: any;
 
 @Component({
  selector: 'app-ingredient-list',
@@ -15,47 +15,67 @@ export class IngredientListComponent implements AfterViewInit {
  @Output() deleteAll = new EventEmitter<void>();
  
  ingredientToDelete: Ingredient | null = null;
- //deleteModal!: Modal;
- //deleteAllModal!: Modal;
+ private deleteModal: any;
+ private deleteAllModal: any;
  
  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
  
  ngAfterViewInit(): void {
    // Exécuter ce code uniquement côté navigateur
    if (isPlatformBrowser(this.platformId)) {
-     const modalElement = document.getElementById('deleteModal');
-     if (modalElement) {
-       //this.deleteModal = new Modal(modalElement);
-     }
-     const modalElementAll = document.getElementById('deleteAllModal');
-     if (modalElementAll) {
-       //this.deleteAllModal = new Modal(modalElementAll);
-     }
+     setTimeout(() => {
+       const deleteModalEl = document.getElementById('deleteModal');
+       if (deleteModalEl) {
+         this.deleteModal = new bootstrap.Modal(deleteModalEl);
+       }
+       
+       const deleteAllModalEl = document.getElementById('deleteAllModal');
+       if (deleteAllModalEl) {
+         this.deleteAllModal = new bootstrap.Modal(deleteAllModalEl);
+       }
+     }, 100);
    }
  }
- 
- // Reste du code sans changement...
  
  confirmDelete(ingredient: Ingredient): void {
    this.ingredientToDelete = ingredient;
-   //this.deleteModal.show();
- }
- 
- deleteConfirmed(): void {
-   if (this.ingredientToDelete) {
-     this.delete.emit(this.ingredientToDelete.id!);
-     this.ingredientToDelete = null;
-     //this.deleteModal.hide();
+   if (this.deleteModal) {
+     this.deleteModal.show();
+   } else {
+     // Fallback si le modal n'est pas initialisé
+     if (confirm(`Voulez-vous vraiment supprimer l'ingrédient ${ingredient.nom} ?`)) {
+       this.deleteConfirmed();
+     }
    }
  }
+ deleteConfirmed(): void {
+  if (this.ingredientToDelete && this.ingredientToDelete.id !== null) {
+    // Convertir null en undefined si nécessaire
+    const idToEmit = this.ingredientToDelete.id;
+    this.delete.emit(idToEmit);
+    if (this.deleteModal) {
+      this.deleteModal.hide();
+    }
+    this.ingredientToDelete = null;
+  }
+}
  
  confirmDeleteAll(): void {
-   //this.deleteAllModal.show();
+   if (this.deleteAllModal) {
+     this.deleteAllModal.show();
+   } else {
+     // Fallback si le modal n'est pas initialisé
+     if (confirm("Voulez-vous vraiment supprimer TOUS les ingrédients ? Cette action est irréversible.")) {
+       this.deleteAllConfirmed();
+     }
+   }
  }
  
  deleteAllConfirmed(): void {
    this.deleteAll.emit();
-   //this.deleteAllModal.hide();
+   if (this.deleteAllModal) {
+     this.deleteAllModal.hide();
+   }
  }
  
  editIngredient(ingredient: Ingredient): void {

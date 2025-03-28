@@ -1,158 +1,190 @@
-/* Styles généraux du conteneur */
 .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 15px;
+  padding: 30px;
   background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Style du titre principal */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 h1 {
   color: #6a1b9a;
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #4a148c;
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 20px;
   border-bottom: 2px solid #6a1b9a;
-  padding-bottom: 0.5rem;
+  padding-bottom: 10px;
 }
 
-/* Styles pour les composants enfants */
-:host ::ng-deep app-ingredient-form {
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background-color: #f9f9f9;
+/* Sections de gestion */
+.management-section {
+  margin-bottom: 30px;
+  padding: 20px;
   border-radius: 6px;
-  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-:host ::ng-deep app-ingredient-list {
-  margin-bottom: 2rem;
+.form-section {
+  background-color: #f9f4ff;
+  border-left: 4px solid #6a1b9a;
+}
+
+.list-section {
+  background-color: #f3f9ff;
+  border-left: 4px solid #00e676;
+}
+
+.import-export-section {
+  background-color: #fafafa;
+  border-left: 4px solid #2196f3;
+}
+
+/* Styles des composants */
+app-ingredient-form,
+app-ingredient-list,
+app-ingredient-import-export {
   display: block;
+  width: 100%;
 }
 
-:host ::ng-deep app-ingredient-import-export {
-  display: block;
-  margin-top: 2rem;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
+/* Alertes et notifications */
+.alert {
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
 }
 
-/* Style des boutons primaires dans les composants */
-:host ::ng-deep .btn-primary {
-  background-color: #6a1b9a;
-  border-color: #6a1b9a;
-}
-
-:host ::ng-deep .btn-primary:hover {
-  background-color: #5a148a;
-  border-color: #5a148a;
-}
-
-/* Style des boutons secondaires */
-:host ::ng-deep .btn-secondary {
-  background-color: #757575;
-  border-color: #757575;
-}
-
-:host ::ng-deep .btn-secondary:hover {
-  background-color: #616161;
-  border-color: #616161;
-}
-
-/* Style du bouton de danger */
-:host ::ng-deep .btn-danger {
-  background-color: #d32f2f;
-  border-color: #d32f2f;
-}
-
-:host ::ng-deep .btn-danger:hover {
-  background-color: #b71c1c;
-  border-color: #b71c1c;
-}
-
-/* Style des alertes de succès */
-:host ::ng-deep .alert-success {
+.alert-success {
   background-color: #e8f5e9;
-  border-color: #81c784;
   color: #2e7d32;
+  border-left: 4px solid #2e7d32;
 }
 
-/* Style des alertes d'erreur */
-:host ::ng-deep .alert-danger {
+.alert-danger {
   background-color: #ffebee;
-  border-color: #e57373;
   color: #c62828;
+  border-left: 4px solid #c62828;
 }
 
-/* Style pour le tableau */
-:host ::ng-deep .table {
-  border: 1px solid #e0e0e0;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Styles des boutons */
+button {
+  padding: 10px 16px;
+  border: none;
   border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary, button[type="submit"] {
+  background-color: #6a1b9a;
+  color: white;
+}
+
+.btn-primary:hover, button[type="submit"]:hover {
+  background-color: #4a148c;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary, button[type="button"] {
+  background-color: #757575;
+  color: white;
+}
+
+.btn-secondary:hover, button[type="button"]:hover {
+  background-color: #616161;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-danger, button.btn-danger {
+  background-color: #e53935;
+  color: white;
+}
+
+.btn-danger:hover, button.btn-danger:hover {
+  background-color: #c62828;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Tableaux (pour garder la cohérence) */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
 }
 
-:host ::ng-deep .table-dark th {
+th {
   background-color: #6a1b9a !important;
-  border-color: #5a148a !important;
+  color: white !important;
+  padding: 15px !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
 }
 
-:host ::ng-deep .table-striped tbody tr:nth-of-type(odd) {
+td {
+  padding: 12px 15px !important;
+  vertical-align: middle !important;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+tbody tr:hover {
   background-color: #f5f5f5;
 }
 
-:host ::ng-deep .table tr:hover {
-  background-color: #f0f0f0;
-}
-
-:host ::ng-deep td {
-  vertical-align: middle;
-}
-
-/* Style des champs de formulaire */
-:host ::ng-deep .form-control {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-:host ::ng-deep .form-control:focus {
-  border-color: #6a1b9a;
-  box-shadow: 0 0 0 0.2rem rgba(106, 27, 154, 0.25);
-}
-
-/* Style des étiquettes */
-:host ::ng-deep label {
-  font-weight: 500;
-  color: #424242;
-}
-
-/* Style responsive */
-@media (max-width: 992px) {
-  .container {
-    padding: 15px 10px;
-  }
-  
-  h1 {
-    font-size: 1.6rem;
-  }
-  
-  :host ::ng-deep app-ingredient-form,
-  :host ::ng-deep app-ingredient-import-export {
-    padding: 0.75rem;
-  }
-}
-
+/* Responsive design */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 1.4rem;
+  .container {
+    padding: 15px;
   }
   
-  :host ::ng-deep .table {
-    display: block;
-    overflow-x: auto;
+  h1 {
+    font-size: 24px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  .management-section {
+    padding: 15px;
+  }
+  
+  button {
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
