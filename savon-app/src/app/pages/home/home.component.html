@@ -1,39 +1,63 @@
 <div class="home-page">
-    <h2>Bienvenue sur notre application</h2>
-
-    <p>
-        Avec notre application vous allez pouvoir formuler vos propres recettes de savon
-        en utilisant la saponification à froid.
-    </p>
-
-    <div class="container row mb-4 neon-glow">
-        <div class="col-12 col-lg-5 text-center py-4 ms-4">
-            <img src="assets/Logo-Sav-App-02.jpeg" alt="Logo standard de la société ADEPRO" class="img-styled">
-
+    <div class="page-content">
+      <div class="header-section">
+        <h1>Bienvenue sur SavonApp</h1>
+        <p>L'application qui vous permet de créer vos propres recettes de savon avec la saponification à froid.</p>
+      </div>
+  
+      <div class="logos-section">
+        <div class="logo-container">
+          <img src="assets/Logo-Sav-App-02.jpeg" alt="Logo SavonApp" class="app-logo">
         </div>
-    
-        <div class="col-12 col-lg-5 text-center py-4 ms-0">
-            <img src="assets/fond-01.jpeg" alt="Logo standard de la société ADEPRO" class="img-styled">
-
-
+        <div class="logo-container">
+          <img src="assets/fond-01.jpeg" alt="Image savon" class="app-logo">
         </div>
+      </div>
+  
+      <div class="info-section">
+        <h2>À propos de SavonApp</h2>
+        <p>SavonApp est une application développée dans le cadre d'un partenariat entre la société <strong>ADEPRO</strong> et le <strong>Lycée Léonard de Vinci</strong>. Ce projet collaboratif vise à offrir un outil professionnel tout en permettant aux étudiants de travailler sur un cas concret de développement d'application web.</p>
+        
+        <h3>Utilité de l'application</h3>
+        <p>SavonApp répond aux besoins spécifiques des artisans savonniers et des passionnés de saponification à froid en proposant :</p>
+        <ul>
+          <li>Un calculateur précis des proportions d'huiles, de soude et d'eau</li>
+          <li>Une base de données d'ingrédients avec leurs propriétés spécifiques</li>
+          <li>La possibilité de créer et sauvegarder des recettes personnalisées</li>
+          <li>Un suivi des caractéristiques de chaque recette (dureté, pouvoir moussant, propriétés lavantes, etc.)</li>
+        </ul>
+        
+        <h3>Public cible</h3>
+        <p>SavonApp s'adresse principalement à :</p>
+        <ul>
+          <li>Les artisans savonniers professionnels cherchant un outil pour optimiser leurs formulations</li>
+          <li>Les passionnés de DIY (Do It Yourself) souhaitant créer leurs propres savons naturels</li>
+          <li>Les débutants en saponification à froid ayant besoin d'un guide fiable pour leurs premières créations</li>
+          <li>Les formateurs et écoles enseignant les techniques de fabrication de savon</li>
+        </ul>
+        
+        <p>Découvrez dès maintenant nos fonctionnalités en consultant notre <a routerLink="/ingredients">base d'ingrédients</a> ou en créant votre première <a routerLink="/createrecette">recette de savon</a>.</p>
+      </div>
+  
+      <div class="partnership-section">
+        <h2>Un projet collaboratif</h2>
+        <p>Le partenariat entre ADEPRO et le Lycée Léonard de Vinci illustre la volonté commune de créer des synergies entre le monde professionnel et l'enseignement. Les étudiants en BTS SIO SLAM ont participé activement au développement de cette application en mettant en pratique leurs compétences en programmation et en design d'interface.</p>
+        <p>Ce projet pédagogique permet aux étudiants de travailler sur un cas réel tout en fournissant un outil utile à une communauté d'utilisateurs.</p>
+      </div>
+  
+      <div class="adepro-section">
+        <p>Une application développée par :</p>
+        <div class="logos-footer">
+          <div class="adepro-logo">
+            <img src="assets/adepro_logo_trans.png" alt="Logo ADEPRO">
+          </div>
+          <span class="partnership-text">en partenariat avec</span>
+          <div class="lycee-logo">
+            <img src="assets/logoLdV_baseline-fondblanc.png" alt="Logo Lycée Léonard de Vinci">
+            <p class="lycee-name">Lycée Léonard de Vinci</p>
+          </div>
+        </div>
+        <p>Pour en savoir plus, consultez notre page <a routerLink="/about">À propos</a>.</p>
+      </div>
     </div>
-
-    <p>
-        Vous pouvez calculer des recettes avec la rubrique <a routerLink="/calculator"><b>"Calculateur"</b></a>.
-        Mais vous pourrez également sauvegarder vos recettes pour les retrouver ultérieurement en vous inscrivant.
-    </p>
-
-    <p>
-        Ce site vous est mis à disposition par la société <b>ADEPRO</b>.
-    </p>
-
-    <div class="text-center mt-3 mb-4"><img src="assets/adepro_logo_trans.png" alt="Logo standard de la société ADEPRO" class="logo-glow">
-
-
-    </div>
-
-    <p>
-        Découvrez en plus à notre sujet en consultant la rubrique <a routerLink="/about"><b>"A propos"</b></a>.
-    </p>
-</div>
+  </div>
