@@ -1,43 +1,54 @@
 <div class="container mt-4">
-  <h2>Liste des recettes enregistrées</h2>
+  <h2 class="mb-4 text-center">Liste des recettes enregistrées</h2>
 
-  <!-- Messages de chargement, d'erreur, etc. -->
-  
-  <!-- Créez une grille pour les graphiques radar -->
-  <div class="row mt-3">
-    <div *ngFor="let recette of recettes" class="col-6 col-md-4 col-lg-3 mb-3">
-      <div class="card h-100 shadow-sm">
-        <div class="card-header py-2">
-          <h6 class="m-0"><b>{{ recette.titre }}</b></h6>
-        </div>
-        <div class="card-body p-1">
-          <app-radar-chart 
-            [title]="recette.titre"
-            [scores]="getScores(recette)">
-          </app-radar-chart>
-        </div>
-      </div>
-    </div>
+  <!-- Messages de chargement et d'erreur -->
+  <div *ngIf="isLoading" class="alert alert-info text-center">
+    Chargement des recettes en cours...
   </div>
-  
-  <!-- Liste détaillée des recettes (optionnel) -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="!isLoading && recettes.length === 0" class="alert alert-warning text-center">
+    Aucune recette disponible.
+  </div>
+
+  <!-- Grille des graphiques radar -->
   <div class="row mt-4">
-    <div *ngFor="let recette of recettes" class="col-12 col-md-6 col-lg-4 mb-3">
-      <div class="card shadow">
-        <!-- Contenu détaillé de chaque recette -->
-        <div class="card-header">
-          <div class="card-title ms-2 my-2">
-            <h5><b>{{ recette.titre }}</b></h5>
+    <div *ngFor="let recette of recettes" class="col-md-6 col-lg-4 mb-4">
+      <div class="card h-100 shadow">
+        <div class="card-header bg-purple text-white py-2">
+          <h5 class="card-title m-0 text-center">{{ recette.titre }}</h5>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <!-- Graphique radar -->
+          <div class="radar-container mb-3">
+            <app-radar-chart [title]="recette.titre" [scores]="getScores(recette)"></app-radar-chart>
+          </div>
+          <!-- Description et autres détails -->
+          <div class="recette-details">
+            <p class="mb-2"><strong>Description:</strong> {{ recette.description }}</p>
+            <div class="recette-specs">
+              <div class="row">
+                <div class="col-6">
+                  <p class="mb-2"><strong>Surgraissage:</strong> {{ recette.surgraissage }}%</p>
+                </div>
+                <div class="col-6">
+                  <p class="mb-2"><strong>Agent alcalin:</strong> {{ recette.avecSoude ? 'Soude' : 'Potasse' }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <p class="mb-2"><strong>Concentration:</strong> {{ recette.concentrationAlcalin }}%</p>
+                </div>
+                <div class="col-6">
+                  <p class="mb-2"><strong>Quantité:</strong> {{ recette.qteAlcalin }}g</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="card-body p-2">
-          <!-- Description et autres détails -->
-          <p><b>Description:</b> {{ recette.description }}</p>
-          <p><b>Surgraissage:</b> {{ recette.surgraissage }}%</p>
-          <!-- Autres détails ici -->
-        </div>
-        <div class="card-footer">
-          <button (click)="deleteRecette(recette.id)" class="btn btn-danger btn-sm">
+        <div class="card-footer d-flex justify-content-between">
+          <button (click)="deleteRecette(recette.id)" class="btn btn-sm btn-danger">
             <i class="bi bi-trash-fill me-1"></i>Supprimer
           </button>
         </div>

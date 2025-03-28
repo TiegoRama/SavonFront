@@ -2,7 +2,7 @@ import { Component, AfterViewInit, Input, ViewChild, ElementRef, Inject, PLATFOR
 import { isPlatformBrowser } from '@angular/common';
 import { Chart, RadarController, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend } from 'chart.js';
 
-// Très important : ce bloc doit être exécuté avant toute création de chart :
+// Enregistrement des composants Chart.js nécessaires
 Chart.register(RadarController, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
 @Component({
@@ -19,7 +19,7 @@ export class RadarChartComponent implements AfterViewInit {
   readonly labels = [
     'Douceur',
     'Lavant',
-    'Volume mousse',
+    'Vol. mousse',
     'Tenue mousse',
     'Dureté',
     'Solubilité',
@@ -31,56 +31,88 @@ export class RadarChartComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     // Vérifier si l'exécution est dans un navigateur
     if (isPlatformBrowser(this.platformId)) {
-      // Envelopper dans un setTimeout pour permettre au DOM de se stabiliser
+      // Utiliser un setTimeout pour permettre au DOM de se stabiliser
       setTimeout(() => {
-        if (this.radarCanvas && this.radarCanvas.nativeElement) {
-          new Chart(this.radarCanvas.nativeElement, {
-            type: 'radar',
-            data: {
-              labels: this.labels,
-              datasets: [
-                {
-                  label: this.title,
-                  data: this.scores,
-                  fill: true,
-                  backgroundColor: 'rgba(210, 0, 255, 0.2)',
-                  borderColor: 'rgb(210, 0, 255)',
-                  pointBackgroundColor: 'rgb(0, 180, 0)',
-                  pointBorderColor: 'rgb(0, 180, 0)',
-                  pointHoverBackgroundColor: 'rgb(255, 255, 255)',
-                  pointHoverBorderColor: 'rgb(0, 180, 0)'
-                }
-              ]
+        this.createChart();
+      }, 0);
+    }
+  }
+  
+  private createChart(): void {
+    if (this.radarCanvas && this.radarCanvas.nativeElement) {
+      new Chart(this.radarCanvas.nativeElement, {
+        type: 'radar',
+        data: {
+          labels: this.labels,
+          datasets: [
+            {
+              label: this.title,
+              data: this.scores,
+              fill: true,
+              backgroundColor: 'rgba(106, 27, 154, 0.2)',  // Violet clair transparent
+              borderColor: 'rgb(106, 27, 154)',            // Violet foncé
+              pointBackgroundColor: 'rgb(0, 230, 118)',    // Vert
+              pointBorderColor: 'rgb(0, 230, 118)',        // Vert
+              pointHoverBackgroundColor: 'rgb(255, 255, 255)',
+              pointHoverBorderColor: 'rgb(0, 230, 118)',
+              borderWidth: 2,
+              pointRadius: 3,
+              pointHoverRadius: 5
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { 
+              display: false  // Masquer la légende
             },
-            options: {
-              responsive: true,
-              maintainAspectRatio: true,
-              plugins: {
-                legend: { display: false }, // Masque la légende pour gagner de l'espace
-                tooltip: { enabled: true }
+            tooltip: {
+              backgroundColor: 'rgba(106, 27, 154, 0.7)',
+              titleFont: {
+                size: 14
               },
-              scales: {
-                r: {
-                  suggestedMin: 0,
-                  suggestedMax: 10,
-                  ticks: { 
-                    stepSize: 2,     // Moins de lignes sur le graphique
-                    display: false   // Masque les chiffres pour gagner de l'espace
-                  },
-                  angleLines: {
-                    display: true
-                  },
-                  pointLabels: {
-                    font: {
-                      size: 8  // Taille de police plus petite pour les étiquettes
-                    }
-                  }
-                }
+              bodyFont: {
+                size: 12
+              },
+              padding: 10,
+              displayColors: false,
+              position: 'nearest',
+              yAlign: 'bottom',
+              xAlign: 'center',
+              caretPadding: 10,
+              caretSize: 8
+            }
+          },
+          scales: {
+            r: {
+              suggestedMin: 0,
+              suggestedMax: 10,
+              ticks: { 
+                stepSize: 2,
+                display: false,  // Masquer les graduations chiffrées
+                color: '#666'
+              },
+              angleLines: {
+                color: 'rgba(180, 180, 180, 0.4)',
+              },
+              grid: {
+                color: 'rgba(180, 180, 180, 0.2)',
+              },
+              pointLabels: {
+                font: {
+                  size: 12,
+                  weight: 'bold'
+                },
+                color: '#333',
+                padding: 15,
+                centerPointLabels: false
               }
             }
-          });
+          }
         }
-      }, 0);
+      });
     }
   }
 }

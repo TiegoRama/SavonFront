@@ -1,0 +1,133 @@
+/* Styles globaux pour la page recettes */
+.container {
+    max-width: 1200px;
+  }
+  
+  /* En-tête de page */
+  h2 {
+    color: #6a1b9a;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Styliser les cartes */
+  .card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid rgba(106, 27, 154, 0.2);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(106, 27, 154, 0.15);
+  }
+  
+  /* En-tête des cartes */
+  .card-header {
+    padding: 0.75rem;
+    background-color: #6a1b9a !important;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Corps des cartes */
+  .card-body {
+    padding: 1.25rem;
+  }
+  
+  /* Conteneur du radar chart */
+  .radar-container {
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 0;
+  }
+  
+  /* Détails de la recette */
+  .recette-details {
+    font-size: 0.9rem;
+  }
+  
+  .recette-specs {
+    background-color: #f9f4ff;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+  }
+  
+  .recette-specs p {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Pied de carte avec boutons */
+  .card-footer {
+    background-color: rgba(106, 27, 154, 0.05);
+    border-top: 1px solid rgba(106, 27, 154, 0.1);
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Boutons */
+  .btn-outline-primary {
+    color: #6a1b9a;
+    border-color: #6a1b9a;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #6a1b9a;
+    color: white;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  /* Alertes */
+  .alert {
+    border-radius: 8px;
+  }
+  
+  .alert-info {
+    background-color: #e3f2fd;
+    border-color: #90caf9;
+    color: #0d47a1;
+  }
+  
+  .alert-danger {
+    background-color: #ffebee;
+    border-color: #ffcdd2;
+    color: #c62828;
+  }
+  
+  .alert-warning {
+    background-color: #fff8e1;
+    border-color: #ffe082;
+    color: #ff8f00;
+  }
+  
+  /* Adaptatif pour différentes tailles d'écran */
+  @media (max-width: 767px) {
+    .radar-container {
+      height: 180px;
+    }
+    
+    .recette-specs .row {
+      display: block;
+    }
+    
+    .recette-specs .col-6 {
+      width: 100%;
+    }
+  }
