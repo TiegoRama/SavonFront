@@ -1,150 +1,158 @@
-/* Couleurs principales */
-:root {
-    --primary-violet: #6a1b9a;
-    --secondary-violet: #9c27b0;
-    --accent-green: #4caf50;
-    --background-light: #f5f5f5;
-  }
-  
-  /* Conteneur principal */
+/* Styles généraux du conteneur */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 15px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+/* Style du titre principal */
+h1 {
+  color: #6a1b9a;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #6a1b9a;
+  padding-bottom: 0.5rem;
+}
+
+/* Styles pour les composants enfants */
+:host ::ng-deep app-ingredient-form {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+:host ::ng-deep app-ingredient-list {
+  margin-bottom: 2rem;
+  display: block;
+}
+
+:host ::ng-deep app-ingredient-import-export {
+  display: block;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+/* Style des boutons primaires dans les composants */
+:host ::ng-deep .btn-primary {
+  background-color: #6a1b9a;
+  border-color: #6a1b9a;
+}
+
+:host ::ng-deep .btn-primary:hover {
+  background-color: #5a148a;
+  border-color: #5a148a;
+}
+
+/* Style des boutons secondaires */
+:host ::ng-deep .btn-secondary {
+  background-color: #757575;
+  border-color: #757575;
+}
+
+:host ::ng-deep .btn-secondary:hover {
+  background-color: #616161;
+  border-color: #616161;
+}
+
+/* Style du bouton de danger */
+:host ::ng-deep .btn-danger {
+  background-color: #d32f2f;
+  border-color: #d32f2f;
+}
+
+:host ::ng-deep .btn-danger:hover {
+  background-color: #b71c1c;
+  border-color: #b71c1c;
+}
+
+/* Style des alertes de succès */
+:host ::ng-deep .alert-success {
+  background-color: #e8f5e9;
+  border-color: #81c784;
+  color: #2e7d32;
+}
+
+/* Style des alertes d'erreur */
+:host ::ng-deep .alert-danger {
+  background-color: #ffebee;
+  border-color: #e57373;
+  color: #c62828;
+}
+
+/* Style pour le tableau */
+:host ::ng-deep .table {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+:host ::ng-deep .table-dark th {
+  background-color: #6a1b9a !important;
+  border-color: #5a148a !important;
+}
+
+:host ::ng-deep .table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f5f5f5;
+}
+
+:host ::ng-deep .table tr:hover {
+  background-color: #f0f0f0;
+}
+
+:host ::ng-deep td {
+  vertical-align: middle;
+}
+
+/* Style des champs de formulaire */
+:host ::ng-deep .form-control {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+:host ::ng-deep .form-control:focus {
+  border-color: #6a1b9a;
+  box-shadow: 0 0 0 0.2rem rgba(106, 27, 154, 0.25);
+}
+
+/* Style des étiquettes */
+:host ::ng-deep label {
+  font-weight: 500;
+  color: #424242;
+}
+
+/* Style responsive */
+@media (max-width: 992px) {
   .container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px 10px;
   }
   
-  /* Titre */
   h1 {
-    color: var(--primary-violet);
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    font-family: 'Segoe UI', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: 1.6rem;
   }
   
-  /* Cartes des composants enfants */
-  app-ingredient-form,
-  app-ingredient-list,
-  app-ingredient-import-export {
+  :host ::ng-deep app-ingredient-form,
+  :host ::ng-deep app-ingredient-import-export {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+  
+  :host ::ng-deep .table {
     display: block;
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: linear-gradient(145deg, #ffffff 0%, #f8f5ff 100%);
-    border-radius: 10px;
-    border: 1px solid #e0e0e0;
+    overflow-x: auto;
   }
-  
-  /* Boutons génériques */
-  button {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-  }
-  
-  /* Style des formulaires */
-  input, select {
-    padding: 0.8rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    width: 100%;
-    margin: 0.5rem 0;
-    transition: border-color 0.3s ease;
-  }
-  
-  input:focus {
-    outline: none;
-    border-color: var(--secondary-violet);
-  }
-  
-  /* Bouton Sauvegarder */
-  button[type="submit"] {
-    background-color: var(--accent-green);
-    color: white;
-    margin-right: 1rem;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #45a049;
-    transform: translateY(-2px);
-  }
-  
-  /* Bouton Annuler */
-  button[type="button"] {
-    background-color: var(--secondary-violet);
-    color: white;
-  }
-  
-  button[type="button"]:hover {
-    background-color: #7b1fa2;
-  }
-  
-  /* Liste des ingrédients */
-  .ingredient-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    background-color: #f8f5ff;
-    border-radius: 8px;
-    transition: transform 0.2s ease;
-  }
-  
-  .ingredient-item:hover {
-    transform: translateX(5px);
-    background-color: #f0ebff;
-  }
-  
-  /* Bouton Supprimer */
-  .delete-btn {
-    background-color: #e53935;
-    color: white;
-    padding: 0.4rem 0.8rem;
-  }
-  
-  .delete-btn:hover {
-    background-color: #c62828;
-  }
-  
-  /* Section Import/Export */
-  app-ingredient-import-export {
-    border-top: 2px solid var(--primary-violet);
-    padding-top: 2rem;
-  }
-  
-  .import-export-btn {
-    background: none;
-    border: 2px solid var(--accent-green);
-    color: var(--accent-green);
-    margin: 0 1rem;
-  }
-  
-  .import-export-btn:hover {
-    background-color: var(--accent-green);
-    color: white;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .container {
-      margin: 1rem;
-      padding: 10px;
-    }
-    
-    h1 {
-      font-size: 2rem;
-    }
-    
-    button {
-      width: 100%;
-      margin: 0.5rem 0;
-    }
-  }
+}

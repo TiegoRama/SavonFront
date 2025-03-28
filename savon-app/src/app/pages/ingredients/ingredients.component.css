@@ -1,70 +1,88 @@
-/* ingredients.component.css */
+/* Style pour le tableau des ingrédients */
+.ingredients-title {
+  color: #6a1b9a;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
 
-.container {
-    padding: 20px;
-  }
-  
-  h2 {
-    color: #6a1b9a; /* Violet foncé */
-    margin-bottom: 1.5rem;
-  }
-  
-  .table {
-    border: 2px solid #000000;
-    border-radius: 8px;
+.title-underline {
+  height: 3px;
+  background: linear-gradient(to right, #6a1b9a 0%, #00e676 100%);
+  width: 120px;
+  margin-bottom: 2rem;
+}
+
+.ingredients-table {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  border: none;
+}
+
+.ingredients-table thead th {
+  background-color: #6a1b9a;
+  color: white;
+  font-weight: 500;
+  border: none;
+  padding: 12px 15px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.ingredients-table tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.ingredients-table tbody tr:nth-child(odd) {
+  background-color: #f8f5ff;
+}
+
+.ingredients-table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.ingredients-table tbody tr:hover {
+  background-color: #e8f5e9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.ingredients-table td {
+  padding: 12px 15px;
+  color: #333;
+  vertical-align: middle;
+  border: none;
+}
+
+.ingredient-name {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.loading-alert {
+  background-color: rgba(106, 27, 154, 0.1);
+  border-color: rgba(106, 27, 154, 0.2);
+  color: #6a1b9a;
+}
+
+.spinner-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.2em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .table-responsive {
+    border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
   }
-  
-  .table-dark th {
-    background-color: #6a1b9a !important; /* Violet pour l'en-tête */
-    color: #ffffff;
-    border-color: #000000 !important;
+
+  .ingredients-table {
+    box-shadow: none;
   }
-  
-  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #e8f5e9; /* Vert très clair pour les lignes impaires */
-  }
-  
-  .table-striped tbody tr:nth-of-type(even) {
-    background-color: #ffffff; /* Blanc pour les lignes paires */
-  }
-  
-  .table-bordered td, 
-  .table-bordered th {
-    border-color: #000000 !important; /* Bordures noires */
-  }
-  
-  .table-hover tbody tr:hover {
-    background-color: #ce93d8 !important; /* Violet clair au survol */
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Style des cellules */
-  td {
-    color: #2e7d32; /* Vert foncé pour le texte */
-    font-weight: 500;
-  }
-  
-  /* Style des alertes */
-  .alert-info {
-    background-color: #f3e5f5; /* Violet très clair */
-    border-color: #6a1b9a;
-    color: #4a148c;
-  }
-  
-  .alert-danger {
-    background-color: #ffebee;
-    border-color: #c62828;
-  }
-  
-  .alert-warning {
-    background-color: #f0f4c3;
-    border-color: #9e9d24;
-  }
-  
-  /* En-têtes de colonnes */
-  th {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
+}
